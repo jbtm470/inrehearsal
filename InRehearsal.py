@@ -24,27 +24,14 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         return handler_input.response_builder.response
 
 class InRehearsalIntentHandler(AbstractRequestHandler):
+
     def can_handle(self, handler_input):
-        return is_intent_name("QueryScriptIntent")(handler_input)
+        return is_intent_name("ListScriptIntent")(handler_input)
 
     def handle(self, handler_input):
-        scriptID = handler_input.request_envelope.request.intent.slots['scriptID'].value
-        try:
-            data = ddb.get_item(
-                TableName="Scripts",
-                Key={
-                    'ScriptID': {
-                        'N': scriptID
-                    }
-                }
-            )
-        except BaseException as e:
-            print(e)
-            raise(e)
-
-        
-        speech_text = "The play for index " + scriptID + " is " + data['Item']['ScriptTitle']['S'] + ' by '  + data['Item']['Author']['S'] + " and has " + data['Item']['NumberOfActors']['N'] + " actors."
+        speech_text = "I have the follwoing scripts"
         handler_input.response_builder.speak(speech_text).set_should_end_session(False)
+       
         return handler_input.response_builder.response    
 
 sb = SkillBuilder()

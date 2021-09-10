@@ -1,0 +1,140 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "161b2c33-bd0d-4d08-a533-d7c8cb389065": {
+        "id": "161b2c33-bd0d-4d08-a533-d7c8cb389065",
+        "parent": null,
+        "name": "InRehearsal.py",
+        "type": "PYTHON_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "InRehearsal.py",
+        "cursor": {
+          "lineNumber": 56,
+          "column": 47
+        },
+        "config": {
+          "runtime": "python3.8",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": [],
+          "name": "InRehearsal"
+        },
+        "triggers": [
+          {
+            "resourceName": "alexaSK117b91786d6d454f9e35f7f8fb05c73b",
+            "config": {}
+          }
+        ],
+        "lastUpdated": 1631259554187,
+        "testCases": {
+          "703fae79-cb6e-4caf-b804-26a67fff30c7": {
+            "id": "703fae79-cb6e-4caf-b804-26a67fff30c7",
+            "name": "Test event",
+            "functionId": "161b2c33-bd0d-4d08-a533-d7c8cb389065",
+            "event": "{\r\n    \"version\": \"1.0\",\r\n    \"session\": {\r\n        \"new\": true,\r\n        \"sessionId\": \"amzn1.echo-api.session.123456789012\",\r\n        \"application\": {\r\n            \"applicationId\": \"amzn1.ask.skill.987654321\"\r\n        },\r\n        \"user\": {\r\n            \"userId\": \"amzn1.ask.account.testUser\"\r\n        },\r\n        \"attributes\": {}\r\n    },\r\n    \"context\": {\r\n        \"AudioPlayer\": {\r\n            \"playerActivity\": \"IDLE\"\r\n        },\r\n        \"System\": {\r\n            \"application\": {\r\n                \"applicationId\": \"amzn1.ask.skill.987654321\"\r\n            },\r\n            \"user\": {\r\n                \"userId\": \"amzn1.ask.account.testUser\"\r\n            },\r\n            \"device\": {\r\n                \"supportedInterfaces\": {\r\n                    \"AudioPlayer\": {}\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"request\": {\r\n        \"type\": \"LaunchRequest\",\r\n        \"requestId\": \"amzn1.echo-api.request.1234\",\r\n        \"timestamp\": \"2016-10-27T18:21:44Z\",\r\n        \"locale\": \"en-US\"\r\n    }\r\n}",
+            "eventTemplate": "alexa-skills-kit-start-session"
+          }
+        }
+      },
+      "952f3aff-db24-4f47-a20a-b3d7dbfa4d47": {
+        "id": "952f3aff-db24-4f47-a20a-b3d7dbfa4d47",
+        "parent": null,
+        "name": "requirements.txt",
+        "type": "TEXT_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "requirements.txt"
+      }
+    },
+    "openFiles": [
+      "161b2c33-bd0d-4d08-a533-d7c8cb389065"
+    ],
+    "currentFileId": "161b2c33-bd0d-4d08-a533-d7c8cb389065",
+    "resources": {
+      "ddbScripts": {
+        "name": "ddbScripts",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "table": {
+            "arn": "arn:aws:dynamodb:eu-west-2:525519668794:table/Scripts",
+            "name": "Scripts",
+            "partitionKey": "ScriptID",
+            "partitionKeyType": "N",
+            "hasSortKey": false,
+            "sortKey": "",
+            "sortKeyType": "",
+            "payPerRequest": true,
+            "mode": 1,
+            "secondaryIndexes": {}
+          }
+        }
+      },
+      "alexaSK117b91786d6d454f9e35f7f8fb05c73b": {
+        "name": "alexaSK117b91786d6d454f9e35f7f8fb05c73b",
+        "type": "ALEXA",
+        "config": {
+          "type": 1,
+          "verifiedID": true,
+          "skillID": "amzn1.ask.skill.117b9178-6d6d-454f-9e35-f7f8fb05c73b",
+          "applicationID": ""
+        }
+      }
+    },
+    "customTemplate": {
+      "syntax": "JSON",
+      "overrideDefault": false,
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "boto3": {
+          "name": "boto3",
+          "language": "python",
+          "version": "1.16.43",
+          "dev": true,
+          "notRemovable": false
+        },
+        "ask_sdk_core": {
+          "name": "ask_sdk_core",
+          "version": "1.13.0",
+          "dev": false,
+          "language": "python"
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "sigmaVersion": "1.9.1",
+    "projectName": "InRehearsal",
+    "projectDescription": "OU learning project",
+    "projectVersion": "1.0.0",
+    "projectRegion": "eu-west-2",
+    "platform": "AWS",
+    "language": "python",
+    "platformRegions": {},
+    "lastSave": 1631283156106
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "inrehearsal",
+      "url": "https://github.com/jbtm470/inrehearsal"
+    }
+  }
+}

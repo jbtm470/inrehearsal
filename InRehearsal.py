@@ -26,7 +26,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         handler_input.response_builder.speak("Sorry, there was some problem. Please try again!!")
         return handler_input.response_builder.response
 
-class InRehearsalIntentHandler(AbstractRequestHandler):
+class ListScriptIntentHandler(AbstractRequestHandler):
 
     def can_handle(self, handler_input):
         return is_intent_name("ListScriptIntent")(handler_input)
@@ -40,11 +40,6 @@ class InRehearsalIntentHandler(AbstractRequestHandler):
             print(e)
             raise(e)
 
-        speech_text = "I have the following scripts."
-        handler_input.response_builder.speak(speech_text).set_should_end_session(False)
-        speech_text = "   "
-        handler_input.response_builder.speak(speech_text).set_should_end_session(False)
-
         speech_text = ""
         for i in data['Items']:
 
@@ -57,15 +52,30 @@ class InRehearsalIntentHandler(AbstractRequestHandler):
                 pause = '<break time=\"1s\"/>'
 
             speech_text = speech_text + pause + st + " written by "+ aut
-            handler_input.response_builder.speak(speech_text).set_should_end_session(False)
+
+        speech_text = "I have the following scripts." + pause + speech_text
+        handler_input.response_builder.speak(speech_text).set_should_end_session(False)
 
 
         return handler_input.response_builder.response    
 
+class ReadScriptIntentHandler(AbstractRequestHandler):
+
+    def can_handle(self, handler_input):
+        return is_intent_name("ReadScriptIntent")(handler_input)
+
+    def handle(self, handler_input):
+        scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
+        handler_input.response_builder.speak("Lets rehearse "+ scriptname).set_should_end_session(False)
+        
+        return handler_input.response_builder.response
+
+
 sb = SkillBuilder()
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_exception_handler(CatchAllExceptionHandler())
-sb.add_request_handler(InRehearsalIntentHandler())
+sb.add_request_handler(ListScriptIntentHandler())
+sb.add_request_handler(ReadScriptIntentHandler())
 
 def handler(event, context):
     return sb.lambda_handler()(event, context)

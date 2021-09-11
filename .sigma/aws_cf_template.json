@@ -80,7 +80,24 @@
               }
             }
           ]
-        }
+        },
+        "Policies": [
+          {
+            "PolicyName": "InRehearsalPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Scan"
+                  ],
+                  "Resource": "arn:aws:dynamodb:eu-west-2:525519668794:table/Scripts"
+                }
+              ]
+            }
+          }
+        ]
       }
     },
     "alexaSK117b91786d6dInRehearsalPermission": {

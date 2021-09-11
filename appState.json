@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "InRehearsal.py",
         "cursor": {
-          "lineNumber": 34,
-          "column": 1
+          "lineNumber": 57,
+          "column": 44
         },
         "config": {
           "runtime": "python3.8",
@@ -36,6 +36,20 @@
             "functionId": "161b2c33-bd0d-4d08-a533-d7c8cb389065",
             "event": "{\r\n    \"version\": \"1.0\",\r\n    \"session\": {\r\n        \"new\": true,\r\n        \"sessionId\": \"amzn1.echo-api.session.123456789012\",\r\n        \"application\": {\r\n            \"applicationId\": \"amzn1.ask.skill.987654321\"\r\n        },\r\n        \"user\": {\r\n            \"userId\": \"amzn1.ask.account.testUser\"\r\n        },\r\n        \"attributes\": {}\r\n    },\r\n    \"context\": {\r\n        \"AudioPlayer\": {\r\n            \"playerActivity\": \"IDLE\"\r\n        },\r\n        \"System\": {\r\n            \"application\": {\r\n                \"applicationId\": \"amzn1.ask.skill.987654321\"\r\n            },\r\n            \"user\": {\r\n                \"userId\": \"amzn1.ask.account.testUser\"\r\n            },\r\n            \"device\": {\r\n                \"supportedInterfaces\": {\r\n                    \"AudioPlayer\": {}\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"request\": {\r\n        \"type\": \"LaunchRequest\",\r\n        \"requestId\": \"amzn1.echo-api.request.1234\",\r\n        \"timestamp\": \"2016-10-27T18:21:44Z\",\r\n        \"locale\": \"en-US\"\r\n    }\r\n}",
             "eventTemplate": "alexa-skills-kit-start-session"
+          },
+          "633e7b37-fbfe-4c19-b266-f90cb10079be": {
+            "id": "633e7b37-fbfe-4c19-b266-f90cb10079be",
+            "name": "TestList",
+            "functionId": "161b2c33-bd0d-4d08-a533-d7c8cb389065",
+            "event": "{\r\n    \"version\": \"1.0\",\r\n    \"session\": {\r\n        \"new\": false,\r\n        \"sessionId\": \"amzn1.echo-api.session.123456789012\",\r\n        \"application\": {\r\n            \"applicationId\": \"amzn1.ask.skill.987654321\"\r\n        },\r\n        \"attributes\": {},\r\n        \"user\": {\r\n            \"userId\": \"amzn1.ask.account.testUser\"\r\n        }\r\n    },\r\n    \"context\": {\r\n        \"AudioPlayer\": {\r\n            \"playerActivity\": \"IDLE\"\r\n        },\r\n        \"System\": {\r\n            \"application\": {\r\n                \"applicationId\": \"amzn1.ask.skill.987654321\"\r\n            },\r\n            \"user\": {\r\n                \"userId\": \"amzn1.ask.account.testUser\"\r\n            },\r\n            \"device\": {\r\n                \"supportedInterfaces\": {\r\n                    \"AudioPlayer\": {}\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"request\": {\r\n        \"type\": \"IntentRequest\",\r\n        \"requestId\": \"amzn1.echo-api.request.1234\",\r\n        \"timestamp\": \"2016-10-27T21:06:28Z\",\r\n        \"locale\": \"en-US\",\r\n        \"intent\": {\r\n            \"name\": \"ListScriptIntent\",\r\n            \"slots\": {}\r\n        }\r\n    }\r\n}",
+            "eventTemplate": "alexa-skills-kit-intent-getnewfact"
+          },
+          "46c9e85a-e3f6-4714-8412-9f979199cd88": {
+            "id": "46c9e85a-e3f6-4714-8412-9f979199cd88",
+            "name": "Test event",
+            "functionId": "161b2c33-bd0d-4d08-a533-d7c8cb389065",
+            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
+            "eventTemplate": "hello-world"
           }
         }
       },
@@ -128,7 +142,7 @@
     "platform": "AWS",
     "language": "python",
     "platformRegions": {},
-    "lastSave": 1631298539952
+    "lastSave": 1631355051687
   },
   "VCS_STATE": {
     "provider": "GitHub",

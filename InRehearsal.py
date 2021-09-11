@@ -1,10 +1,13 @@
 import boto3
 ddb = boto3.client("dynamodb")
+from boto3.dynamodb.conditions import Key, Attr
 
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.utils import is_request_type, is_intent_name
+
+
 
 class LaunchRequestHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
@@ -29,9 +32,34 @@ class InRehearsalIntentHandler(AbstractRequestHandler):
         return is_intent_name("ListScriptIntent")(handler_input)
 
     def handle(self, handler_input):
-        speech_text = "I have the follwoing scripts"
+        try:
+            data = ddb.scan(
+                TableName="Scripts"
+            )
+        except BaseException as e:
+            print(e)
+            raise(e)
+
+        speech_text = "I have the following scripts."
         handler_input.response_builder.speak(speech_text).set_should_end_session(False)
-       
+        speech_text = "   "
+        handler_input.response_builder.speak(speech_text).set_should_end_session(False)
+
+        speech_text = ""
+        for i in data['Items']:
+
+            st =i['ScriptTitle']['S']
+            aut=i['Author']['S']
+
+            if speech_text == "":
+                pause = ""
+            else:
+                pause = '<break time=\"1s\"/>'
+
+            speech_text = speech_text + pause + st + " written by "+ aut
+            handler_input.response_builder.speak(speech_text).set_should_end_session(False)
+
+
         return handler_input.response_builder.response    
 
 sb = SkillBuilder()

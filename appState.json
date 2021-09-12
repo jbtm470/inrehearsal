@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "InRehearsal.py",
         "cursor": {
-          "lineNumber": 51,
-          "column": 18
+          "lineNumber": 75,
+          "column": 1
         },
         "config": {
           "runtime": "python3.8",
@@ -97,6 +97,25 @@
           "skillID": "amzn1.ask.skill.117b9178-6d6d-454f-9e35-f7f8fb05c73b",
           "applicationID": ""
         }
+      },
+      "ddbMacbeth": {
+        "name": "ddbMacbeth",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "table": {
+            "arn": "arn:aws:dynamodb:eu-west-2:525519668794:table/Macbeth",
+            "name": "Macbeth",
+            "partitionKey": "Line",
+            "partitionKeyType": "N",
+            "hasSortKey": false,
+            "sortKey": "",
+            "sortKeyType": "",
+            "payPerRequest": true,
+            "mode": 1,
+            "secondaryIndexes": {}
+          }
+        }
       }
     },
     "customTemplate": {
@@ -142,7 +161,7 @@
     "platform": "AWS",
     "language": "python",
     "platformRegions": {},
-    "lastSave": 1631356996746
+    "lastSave": 1631456822073
   },
   "VCS_STATE": {
     "provider": "GitHub",

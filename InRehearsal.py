@@ -67,7 +67,22 @@ class ReadScriptIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
         handler_input.response_builder.speak("Lets rehearse "+ scriptname).set_should_end_session(False)
-        
+        numAct = 1
+        numScene = 1
+        try:
+            data = ddb.query(
+                TableName="Macbeth",
+                KeyConditionExpression=Key('act').eq(1)
+            )
+        except BaseException as e:
+            print(e)
+            raise(e)
+
+        items = data['Items']
+        print(items)
+
+
+
         return handler_input.response_builder.response
 
 

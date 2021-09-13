@@ -97,7 +97,7 @@
                 {
                   "Effect": "Allow",
                   "Action": [
-                    "dynamodb:Query"
+                    "dynamodb:Scan"
                   ],
                   "Resource": "arn:aws:dynamodb:eu-west-2:525519668794:table/Macbeth"
                 }

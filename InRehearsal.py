@@ -1,3 +1,4 @@
+import json
 import boto3
 ddb = boto3.client("dynamodb")
 from boto3.dynamodb.conditions import Key, Attr
@@ -23,7 +24,8 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 
     def handle(self, handler_input, exception):
         print(exception)
-        handler_input.response_builder.speak("Sorry, there was some problem. Please try again!!")
+   
+        handler_input.response_builder.speak("Sorry, there was a problem. Please try again!!")
         return handler_input.response_builder.response
 
 class ListScriptIntentHandler(AbstractRequestHandler):
@@ -66,22 +68,33 @@ class ReadScriptIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
+        print ("---"+ scriptname)
         handler_input.response_builder.speak("Lets rehearse "+ scriptname).set_should_end_session(False)
-        numAct = 1
-        numScene = 1
+        numAct = '1'
+        numScene = '1'
         try:
-            data = ddb.query(
+            data = ddb.scan(
                 TableName="Macbeth",
-                KeyConditionExpression=Key('act').eq(1)
+                ExpressionAttributeValues={
+                    ':act': {
+                        'N': "1"
+                    },
+                    ':scene': {
+                        'N': "1"
+                    },
+                    ':include': {
+                        'N': "1"
+                    }
+                },
+                FilterExpression="act = :act and scene = :scene and include = :include"
             )
         except BaseException as e:
             print(e)
             raise(e)
 
-        items = data['Items']
-        print(items)
+        print(data['Items'])
 
-
+        print(json.dumps((data), indent=4))
 
         return handler_input.response_builder.response
 

@@ -86,17 +86,23 @@ class ReadScriptIntentHandler(AbstractRequestHandler):
                         'N': "1"
                     }
                 },
-                FilterExpression="act = :act and scene = :scene and include = :include"
+                FilterExpression="act = :act and scene = :scene and include = :include",
+                ProjectionExpression="act,scene,Line,direction"
             )
         except BaseException as e:
             print(e)
             raise(e)
 
         print(data['Items'])
+        a=data['Items']
 
-        print(json.dumps((data), indent=4))
-
+        for i in range(len(a)) : 
+            for j in range(len(a[i])) : 
+                print(a[i][j], end=" ")
+   
         return handler_input.response_builder.response
+
+
 
 
 sb = SkillBuilder()

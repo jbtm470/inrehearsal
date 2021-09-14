@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "InRehearsal.py",
         "cursor": {
-          "lineNumber": 97,
-          "column": 42
+          "lineNumber": 106,
+          "column": 1
         },
         "config": {
           "runtime": "python3.8",
@@ -28,7 +28,7 @@
             "config": {}
           }
         ],
-        "lastUpdated": 1631259554187,
+        "lastUpdated": 1631635572642,
         "testCases": {
           "703fae79-cb6e-4caf-b804-26a67fff30c7": {
             "id": "703fae79-cb6e-4caf-b804-26a67fff30c7",
@@ -128,7 +128,7 @@
     "customTemplate": {
       "syntax": "JSON",
       "overrideDefault": false,
-      "dialect": null,
+      "dialect": "CloudFormation",
       "definitions": null
     },
     "envVariables": [
@@ -155,12 +155,6 @@
           "version": "1.13.0",
           "dev": false,
           "language": "python"
-        },
-        "ast": {
-          "name": "ast",
-          "version": "0.0.2",
-          "dev": false,
-          "language": "python"
         }
       }
     }
@@ -174,7 +168,7 @@
     "platform": "AWS",
     "language": "python",
     "platformRegions": {},
-    "lastSave": 1631514313726
+    "lastSave": 1631635580548
   },
   "VCS_STATE": {
     "provider": "GitHub",

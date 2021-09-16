@@ -46,6 +46,8 @@ class ListScriptIntentHandler(AbstractRequestHandler):
 
         speech_text = ""
         script_match = 0
+        print('1')
+
         for i in data['Items']:
             st =i['ScriptTitle']['S']
             aut=i['Author']['S']
@@ -59,8 +61,9 @@ class ListScriptIntentHandler(AbstractRequestHandler):
                 pause = '<break time=\"1s\"/>'
 
             speech_text = speech_text + pause + st + " written by "+ aut
-
-        if scriptname == "":
+        print('2')
+        print(scriptname)
+        if scriptname == None:
             speech_text = "I have the following scripts." + pause + speech_text
         else:
             if script_match == 1:
@@ -69,7 +72,9 @@ class ListScriptIntentHandler(AbstractRequestHandler):
                 speech_text = "I'm sorry, I do not have the script " + scriptname +"."
             
             handler_input.response_builder.speak(speech_text).set_should_end_session(False)
-    
+        print('3')
+
+        handler_input.response_builder.speak(speech_text)
         return handler_input.response_builder.response    
 
 class ReadScriptIntentHandler(AbstractRequestHandler):
@@ -120,7 +125,7 @@ class RehearseScriptIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
-        print ("---"+ scriptname)
+        print ("---", scriptname)
         handler_input.response_builder.speak("Lets rehearse "+ scriptname).set_should_end_session(False)
         numAct = '1'
         numScene = '1'

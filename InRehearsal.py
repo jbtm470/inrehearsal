@@ -8,8 +8,6 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.utils import is_request_type, is_intent_name
 
-
-
 class LaunchRequestHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         return is_request_type("LaunchRequest")(handler_input)

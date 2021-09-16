@@ -93,13 +93,6 @@
                     "dynamodb:Scan"
                   ],
                   "Resource": "arn:aws:dynamodb:eu-west-2:525519668794:table/Scripts"
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                    "dynamodb:Scan"
-                  ],
-                  "Resource": "arn:aws:dynamodb:eu-west-2:525519668794:table/Macbeth"
                 }
               ]
             }

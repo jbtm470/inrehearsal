@@ -25,7 +25,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
     def handle(self, handler_input, exception):
         print(exception)
    
-        handler_input.response_builder.speak("Sorry, there was a problem. Please try again!!")
+        handler_input.response_builder.speak("Sorry, there was a problem.")
         return handler_input.response_builder.response
 
 class ListScriptIntentHandler(AbstractRequestHandler):
@@ -34,8 +34,11 @@ class ListScriptIntentHandler(AbstractRequestHandler):
         return is_intent_name("ListScriptIntent")(handler_input)
 
     def handle(self, handler_input):
+        # This Intent will list the scripts available.
+        # If a scriptname is passed then the intent will confirm if the script is available to rehearse
         scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
-
+        
+        # Scan the scripts database & hold the results in a dict object called data
         try:
             data = ddb.scan(
                 TableName="Scripts"
@@ -46,8 +49,8 @@ class ListScriptIntentHandler(AbstractRequestHandler):
 
         speech_text = ""
         script_match = 0
-        print('1')
 
+        # build a string of text that Alexa will speak.
         for i in data['Items']:
             st =i['ScriptTitle']['S']
             aut=i['Author']['S']
@@ -61,8 +64,10 @@ class ListScriptIntentHandler(AbstractRequestHandler):
                 pause = '<break time=\"1s\"/>'
 
             speech_text = speech_text + pause + st + " written by "+ aut
-        print('2')
-        print(scriptname)
+
+        # If no scriptname passed, then recite the list of scripts available 
+        # otherwise confirm/deby script availability
+
         if scriptname == None:
             speech_text = "I have the following scripts." + pause + speech_text
         else:
@@ -70,9 +75,9 @@ class ListScriptIntentHandler(AbstractRequestHandler):
                 speech_text = "I have the script " + scriptname +"."
             else: 
                 speech_text = "I'm sorry, I do not have the script " + scriptname +"."
-            
-            handler_input.response_builder.speak(speech_text).set_should_end_session(False)
-        print('3')
+
+        # Say the response    
+        handler_input.response_builder.speak(speech_text).set_should_end_session(False)
 
         handler_input.response_builder.speak(speech_text)
         return handler_input.response_builder.response    
@@ -84,13 +89,12 @@ class ReadScriptIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
-        print ("---"+ scriptname)
-        handler_input.response_builder.speak("Lets rehearse "+ scriptname).set_should_end_session(False)
+        handler_input.response_builder.speak("Lets read "+ scriptname).set_should_end_session(False)
         numAct = '1'
         numScene = '1'
         try:
             data = ddb.scan(
-                TableName="Macbeth",
+                TableName=scriptname,
                 ExpressionAttributeValues={
                     ':act': {
                         'N': "1"
@@ -125,13 +129,12 @@ class RehearseScriptIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         scriptname = handler_input.request_envelope.request.intent.slots['scriptname'].value
-        print ("---", scriptname)
         handler_input.response_builder.speak("Lets rehearse "+ scriptname).set_should_end_session(False)
         numAct = '1'
         numScene = '1'
         try:
             data = ddb.scan(
-                TableName="Macbeth",
+                TableName=scriptname,
                 ExpressionAttributeValues={
                     ':act': {
                         'N': "1"

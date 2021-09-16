@@ -61,7 +61,7 @@ class ListScriptIntentHandler(AbstractRequestHandler):
             else:
                 pause = '<break time=\"1s\"/>'
 
-            speech_text = speech_text + pause + st + " written by "+ aut
+            speech_text = speech_text + pause + st + ", written by " + aut +"."
 
         # If no scriptname passed, then recite the list of scripts available 
         # otherwise confirm/deby script availability
@@ -74,7 +74,7 @@ class ListScriptIntentHandler(AbstractRequestHandler):
             else: 
                 speech_text = "I'm sorry, I do not have the script " + scriptname +"."
 
-        # Say the response    
+        # Say the response.    
         handler_input.response_builder.speak(speech_text).set_should_end_session(False)
 
         handler_input.response_builder.speak(speech_text)

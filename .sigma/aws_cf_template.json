@@ -93,6 +93,16 @@
                     "dynamodb:Scan"
                   ],
                   "Resource": "arn:aws:dynamodb:eu-west-2:525519668794:table/Scripts"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query"
+                  ],
+                  "Resource": [
+                    "arn:aws:dynamodb:eu-west-2:525519668794:table/Macbeth",
+                    "arn:aws:dynamodb:eu-west-2:525519668794:table/Macbeth/index/PK1-index"
+                  ]
                 }
               ]
             }

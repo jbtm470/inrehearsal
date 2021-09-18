@@ -131,32 +131,19 @@ class RehearseScriptIntentHandler(AbstractRequestHandler):
         numAct = '1'
         numScene = '1'
         try:
-            data = ddb.scan(
-                TableName=scriptname,
-                ExpressionAttributeValues={
-                    ':act': {
-                        'N': "1"
-                    },
-                    ':scene': {
-                        'N': "1"
-                    },
-                    ':include': {
-                        'N': "1"
-                    }
-                },
-                FilterExpression="act = :act and scene = :scene and include = :include",
-                ProjectionExpression="act,scene,Line,direction"
+            data = ddb.query(
+                TableName='Macbeth',
+                IndexName="PK1-index",
+                KeyConditionExpression="act = :act",
+                ExpressionAttributeValues={":act":{"N":"1"}},
+                ProjectionExpression="act"
             )
         except BaseException as e:
             print(e)
             raise(e)
 
-        print(data['Items'])
-        a=data['Items']
-
-        for i in range(len(a)) : 
-            for j in range(len(a[i])) : 
-                print(a[i][j], end=" ")
+        for item in data['Items']:
+            print(item)
    
         return handler_input.response_builder.response
 

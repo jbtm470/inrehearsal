@@ -1,4 +1,3 @@
-
-
 boto3 == 1.16.43
 ask_sdk_core == 1.13.0
+pandas == 1.3.3

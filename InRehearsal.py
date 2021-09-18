@@ -1,4 +1,5 @@
 import json
+import pandas as pd 
 import boto3
 ddb = boto3.client("dynamodb")
 from boto3.dynamodb.conditions import Key, Attr
@@ -111,13 +112,9 @@ class ReadScriptIntentHandler(AbstractRequestHandler):
             print(e)
             raise(e)
 
-        print(data['Items'])
-        a=data['Items']
+        pd.DataFrame.from_dict(data)
 
-        for i in range(len(a)) : 
-            for j in range(len(a[i])) : 
-                print(a[i][j], end=" ")
-   
+       
         return handler_input.response_builder.response
 
 class RehearseScriptIntentHandler(AbstractRequestHandler):

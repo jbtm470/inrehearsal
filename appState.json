@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "InRehearsal.py",
         "cursor": {
-          "lineNumber": 117,
-          "column": 8
+          "lineNumber": 115,
+          "column": 37
         },
         "config": {
           "runtime": "python3.8",
@@ -28,7 +28,7 @@
             "config": {}
           }
         ],
-        "lastUpdated": 1631992343454,
+        "lastUpdated": 1632036177118,
         "testCases": {
           "703fae79-cb6e-4caf-b804-26a67fff30c7": {
             "id": "703fae79-cb6e-4caf-b804-26a67fff30c7",
@@ -161,12 +161,18 @@
           "version": "1.3.3",
           "dev": false,
           "language": "python"
+        },
+        "numpy": {
+          "name": "numpy",
+          "version": "1.21.2",
+          "dev": false,
+          "language": "python"
         }
       }
     }
   },
   "PROJECT_META": {
-    "sigmaVersion": "1.9.4",
+    "sigmaVersion": "1.9.1",
     "projectName": "InRehearsal",
     "projectDescription": "OU learning project",
     "projectVersion": "1.0.0",
@@ -174,7 +180,7 @@
     "platform": "AWS",
     "language": "python",
     "platformRegions": {},
-    "lastSave": 1631992669838
+    "lastSave": 1632036337902
   },
   "VCS_STATE": {
     "provider": "GitHub",

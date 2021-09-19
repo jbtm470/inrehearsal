@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "InRehearsal.py",
         "cursor": {
-          "lineNumber": 115,
-          "column": 37
+          "lineNumber": 3,
+          "column": 1
         },
         "config": {
           "runtime": "python3.8",
@@ -180,7 +180,7 @@
     "platform": "AWS",
     "language": "python",
     "platformRegions": {},
-    "lastSave": 1632036337902
+    "lastSave": 1632036804406
   },
   "VCS_STATE": {
     "provider": "GitHub",

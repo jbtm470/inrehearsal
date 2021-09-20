@@ -1,7 +1,4 @@
 import json
-import numpy as np 
-import pandas as pd 
-
 import boto3
 ddb = boto3.client("dynamodb")
 from boto3.dynamodb.conditions import Key, Attr
@@ -114,7 +111,7 @@ class ReadScriptIntentHandler(AbstractRequestHandler):
             print(e)
             raise(e)
 
-        pd.DataFrame.from_dict(data)
+
 
        
         return handler_input.response_builder.response
